@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+    <link rel="stylesheet" href="master.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">    <title>Document</title>
+</head>
+<body>
+
+    <header class="container-fluid d-flex justify-content-between align-items-center navbar ">
+      <div class="d-flex align-items-center col-lg-8 col-md-6 col-sm-4 col-2 ">
+          <img id="logo" src="img/logo.png" width="30px" height="30px">
+          <h1 id="book-title" class="d-none d-lg-block"><small>The Lightning Thief</small></h1>
+      </div>
+      <div class="d-flex justify-content-between darkMode col-lg-4 col-md-6 col-sm-8 col-10" id="navbar-icons">
+          <i class="fa-solid fa-expand is-pointer link darkMode" onclick="fullScreen()" data-toggle="tooltip" data-placement="bottom" title="Full screen"></i>
+          <i class="fa-solid fa-magnifying-glass is-pointer link darkMode" id="searchIcon" data-toggle="modal" data-target="#search" data-toggle="tooltip" data-placement="bottom" title="Search"></i>
+          <i class="fa-solid fa-a is-pointer link darkMode" data-toggle="tooltip" data-toggle="modal" data-target="#display" id="displaySetting"  data-placement="bottom" title="Display options"></i>
+          <i class="fa-solid fa-list-ul is-pointer link darkMode" id="contentSetting" data-toggle="modal" data-target="#content" data-toggle="tooltip" data-placement="bottom" title="Contents"></i>
+          <i class="fa-solid fa-table-list is-pointer link darkMode" id="annotationSetting" data-toggle="modal" data-target="#annotation" data-toggle="tooltip" data-placement="bottom" title="Annotations"></i>
+          <i class="fa-regular fa-bookmark is-pointer link darkMode" data-toggle="tooltip" data-placement="bottom" title="Add bookmark"></i>
+          <i class="fa-solid fa-bookmark is-pointer d-none link darkMode" data-toggle="tooltip" data-placement="bottom" title="Remove bookmark"></i>
+          <i class="fa-regular fa-circle-question is-pointer link darkMode" id="helpSetting" data-toggle="modal" data-target="#help" data-toggle="tooltip" data-placement="bottom" title="Help & Feedback"></i>
+          <i class="fa-solid fa-ellipsis-vertical is-pointer link darkMode" data-toggle="modal" data-target="#more" data-toggle="tooltip" data-placement="bottom" title="More"></i>
+      </div>
+  </header>
+
+<!-- Modal -->
+
+    <!-- search -->
+    <div class="modal fade" id="search" tabindex="-1" aria-labelledby="customModalLabel" data-keyboard="false"  aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable  custom-modal-size custom-modal ">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title darkMode" id="customModalLabel">Search</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" class="darkMode">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="p-3" id="searchForm">
+              <div class="form-group">
+                  <input type="text" class="form-control" id="searchInput" placeholder="Type to search...">
+              </div>
+              <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- display -->
+    <div class="modal fade" id="display" tabindex="-1" aria-labelledby="customModalLabel" aria-hidden="true">
+      <div class="modal-dialog  modal-dialog-scrollable custom-modal-size custom-modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title darkMode" id="customModalLabel">Display options</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span class="darkMode" aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="toggle">
+                <label class="custom-control-label darkMode" for="toggle">Dark theme</label>
+              </div>
+            </div>
+            <div class="container">
+              <p class="darkMode"><b>Font</b></p>
+              <select class="form-control font-select">
+                  <option value="Arial">Arial</option>
+                  <option value="Times New Roman">Times New Roman</option>
+                  <option value="Verdana">Verdana</option>
+              </select>
+            </div>
+            <div class="container">
+              <p class="darkMode"><b>Font size</b></p>
+              <div class="font-size-buttons">
+                  <button class="btn btn-secondary reduce-font" type="button">-</button>
+                  <span class="darkMode" id="fontSizePercentage">100%</span>
+                  <button class="btn btn-secondary increase-font" type="button">+</button>
+              </div>
+            </div>
+            <div class="container">
+              <p class="darkMode"><b>Line Height</b></p>
+              <div class="line-height-buttons">
+                <button class="btn btn-secondary reduce-line-height" type="button">-</button>
+                <span class="darkMode" id="lineHeightPercentage">100%</span>
+                <button class="btn btn-secondary increase-line-height" type="button">+</button>
+              </div>
+            </div>
+            <div class="container">
+              <p class="darkMode"><b>Justify</b></p>
+              <div class="justify-buttons">
+                <button class="btn btn-secondary justify-paragraph" type="button">Justify</button>
+                <button class="btn btn-secondary unjustify-paragraph" type="button">No Justify</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content -->
+    <div class="modal fade" id="content" tabindex="-1" aria-labelledby="customModalLabel" aria-hidden="true">
+      <div class="modal-dialog  modal-dialog-scrollable custom-modal-size custom-modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active tabcolor" id="list1-tab" data-toggle="tab" href="#list1" role="tab" aria-controls="list1" aria-selected="true">Content</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link tabcolor" id="list2-tab" data-toggle="tab" href="#list2" role="tab" aria-controls="list2" aria-selected="false">Bookmark</a>
+              </li>
+            </ul>
+            <button type="button" class="close darkMode" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            
+            
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <!-- First tab -->
+              <div class="tab-pane fade show active" id="list1" role="tabpanel" aria-labelledby="list1-tab">
+                
+                <ul class="agendaList">
+                  <li class="darkMode">Item 1</li>
+                  <li class="darkMode">Item 2</li>
+                  <li class="darkMode">Item 3</li>
+                </ul>
+              </div>
+              
+              <!-- Second tab -->
+              <div class="tab-pane fade" id="list2" role="tabpanel" aria-labelledby="list2-tab">
+                
+                <ul class="agendaList">
+                  <li class="darkMode">Item 4</li>
+                  <li class="darkMode">Item 5</li>
+                  <li class="darkMode">Item 6</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- annotation -->
+    <div class="modal fade" id="annotation" tabindex="-1" aria-labelledby="customModalLabel" aria-hidden="true">
+      <div class="modal-dialog custom-modal-size custom-modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title darkMode" id="customModalLabel">Annotation</h5>
+            <button type="button" class="close darkMode" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h2 class="darkMode">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad maiores eligendi necessitatibus asperiores</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- help -->
+    <div class="modal fade" id="help" tabindex="-1" aria-labelledby="customModalLabel" aria-hidden="true">
+      <div class="modal-dialog custom-modal-size custom-modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title darkMode" id="customModalLabel">Help & feedback</h5>
+            <button type="button" class="close darkMode" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h2 class="darkMode">Modal content goes here.
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="container mt-5" id="draggableBox">
+      <div>
+          <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="searchIcon">
+              <form class="p-3" id="searchForm">
+                  <div class="form-group">
+                      <div class="d-flex justify-content-between pl-4 pr-4">
+                          <label for="searchInput">Search</label>
+                          <span class="close-icon" id="closeSearch"><i class="fa fa-times"></i></span>
+                      </div>
+                      <hr>
+                      <input type="text" class="form-control" id="searchInput" placeholder="Type to search...">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Search</button>
+              </form>
+          </div>
+          <div id="searchResults" class="p-3"></div>
+      </div>
+  </div> -->
+    <!-- display setting dropdown -->
+    <!-- <div class="container mt-5" id="DisSetting" >
+        <div>
+          <div class="dropdown-display-setting dropdown-display-setting-custom"  aria-labelledby="displaySetting">
+            <form class="p-3">
+              <div class="form-group">
+                <div class="d-flex justify-content-between w-25 pl-4 pr-4">
+                    <label for="displaySetting">Display options</label>
+                    <span class="close-icon"><i class="fa fa-times"></i></span>
+                </div>
+                <hr>
+                <div class="container">
+                    <label for="toggle">Dark theme</label>
+                    <input type="checkbox" id="toggle">
+                </div>
+                <div class="container">
+                    <p><b>Font</b></p>
+                    <select class="form-control font-select">
+                        <option value="Arial">Arial</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Verdana">Verdana</option>
+                       
+                    </select>
+                </div>
+                <div class="container">
+                    <p><b>Font size</b></p>
+                    <div class="font-size-buttons">
+                        <button class="btn btn-secondary reduce-font" type="button">-</button>
+                        <span id="fontSizePercentage">100%</span>
+                        <button class="btn btn-secondary increase-font" type="button">+</button>
+                    </div>
+                </div>
+                <div class="container">
+                  <p><b>Line Height</b></p>
+                  <div class="line-height-buttons">
+                    <button class="btn btn-secondary reduce-line-height" type="button">-</button>
+                    <span id="lineHeightPercentage">100%</span>
+                    <button class="btn btn-secondary increase-line-height" type="button">+</button>
+                  </div>
+                </div>
+                <div class="container">
+                  <p><b>Justify</b></p>
+                  <div class="justify-buttons">
+                    <button class="btn btn-secondary justify-paragraph" type="button">Justify</button>
+                    <button class="btn btn-secondary unjustify-paragraph" type="button">No Justify</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div> -->
+    
+    <div id="bookContent">
+      <div id="pages-container" class="single-page-layout"></div>
+      <div id="navigation">
+          <button id="prev-page">Previous</button>
+          <button id="next-page">Next</button>
+          <button id="toggle-layout">Toggle Layout</button>
+      </div>
+  </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/9fbf3dd5e7.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>

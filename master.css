@@ -1,0 +1,221 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.is-pointer{
+    cursor:pointer;
+}
+
+
+/* #searchInput{
+    width: 500px;
+} */
+.close-icon {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+}
+#draggableBox,#DisSetting {
+    /* width: 100px;
+    height: 100px;
+    background-color: #3498db; */
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    cursor: pointer;
+}
+#DisSetting{
+    z-index: 100;
+}
+.dropdown-display-setting{
+    display: none;
+    background-color: white;
+}
+.font-size-buttons,.line-height-buttons,.justify-buttons {
+    margin: 0 auto;
+    text-align: center;
+}
+.font-size-buttons button,.line-height-buttons button,.justify-buttons button {
+    margin: 5px;
+}
+#sampleParagraph{
+    font-size: 18px;
+    line-height: 30px;
+}
+.text-justify{
+    text-align: justify;
+}
+.text-content {
+    column-count: 1; /* Single page layout by default */
+}
+  
+.double-page .text-content {
+    column-count: 2; /* Double page layout */
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    /* padding: 20px; */
+}
+#book {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    /* border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    padding: 20px;
+}
+#pages-container {
+    padding: 20px;
+    /* border: 1px solid #ccc;
+    border-radius: 10px; */
+}
+.page {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    /* border: 1px solid #ddd;
+    border-radius: 5px; */
+}
+button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#navigation {
+    margin-top: 20px;
+    text-align: center;
+}
+button:hover {
+    background-color: #0056b3;
+}
+/* Add this CSS to style two-page layout */
+.double-page-container {
+    display: flex;
+}
+
+.double-page-container .page {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 5px;
+    box-sizing: border-box;
+}
+/* .navbar{
+    width: 100%;
+    height: 50px;
+    background-color: white;
+} */
+
+/* Add this CSS to style single-page layout */
+#pages-container .page {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+/* Add this CSS to set two pages in one column under each other in single-page layout */
+#pages-container.two-page-layout {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#pages-container.two-page-layout .page {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+    padding: 10px;
+}
+#pages-container.single-page-layout .page:nth-child(2) {
+    display: none;
+}
+.navbar{
+    width: 100%;
+    overflow-x: hidden;
+}
+.modal-content {
+    color: black;
+}
+.custom-modal-position {
+    position: absolute;
+    transform: none;
+}
+  
+.custom-modal-size .modal-content {
+    /* width: 400px; */
+    height: calc(100vh - 128px);
+}
+.agendaList>li{
+    list-style-type: none;
+    padding: 20px 0;
+}
+
+.agendaList>li:hover{
+    background-color: rgba(0, 0, 0, 0.062);
+}
+.modal-dialog .custom-modal{
+    position: relative !important;
+    top: 64px !important;
+    left: auto !important;
+    width: auto !important;
+}
+
+@media (max-width: 991px) {
+    
+    .navbar {
+        flex-direction: row !important; /* Ensure flex direction is row */
+        justify-content: space-between !important; /* Space between logo and icons */
+        align-items: center !important; /* Align items in center */
+        width: 100%;
+        overflow-x: hidden;
+    }
+    #navbar-icons {
+        width: 100% !important; /* Let icons take up the necessary space */
+        justify-content: space-between !important; /* Space between icons */
+        flex-grow: 1; /* Allow icons to take necessary space */
+        max-width: 100%; /* Prevent icons from overflowing */
+
+    }
+}
+/* Custom CSS to make the modal full width on mobile */
+@media (max-width: 767.98px) {
+    .modal-dialog{
+        position: relative !important;
+        top: 64px !important;
+        left: auto !important;
+        width: auto !important;
+        right:auto !important;
+        margin: 0;
+    }
+    .modal-content {
+      height: 100%;
+    }
+  }
+
+  @media (min-width: 767.98px) {
+    .modal-dialog{
+        top: 64px;
+        right: 20px;
+        left: auto;
+        position: fixed;
+        width: 400px !important;
+        margin: 0;
+    }
+    .modal-content {
+      height: 100%;
+    }
+  }
+  
+
+
+
+
